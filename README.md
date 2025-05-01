@@ -6,7 +6,7 @@ This is a docker image for running FXServer
 docker run -it -d -p 30120:30120/tcp -p 30120:30120/udp \
 	-v ./server.cfg:/opt/cfx-server/server.cfg:ro \
 	-v ./server:/opt/cfx-server/data
-	wickedracing.net/fxserver:latest
+	ghcr.io/kdstad/fxserver:latest
 ```
 
 ## License
