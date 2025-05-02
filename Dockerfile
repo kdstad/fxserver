@@ -25,18 +25,16 @@ WORKDIR /opt/cfx-server
 RUN set -eux; \
 	cp /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime && echo "Europe/Copenhagen" > /etc/timezone \
 	&& addgroup -g 1000 -S fxserver; adduser -u 1000 -D -S -G fxserver fxserver \
-	&& mkdir -p /config /data/resources /data/cache /data/crashes \
-	&& chown -R fxserver:fxserver /data \
-		&& ln -snf /data/resources /opt/cfx-server/resources \
-		&& ln -snf /data/cache /opt/cfx-server/cache \
-		&& ln -snf /data/crashes /opt/cfx-server/crashes \
-	&& ln -snf /config/server.cfg /opt/cfx-server/server.cfg
+	&& mkdir -p data/resources data/cache data/crashes \
+		&& ln -snf data/resources resources \
+		&& ln -snf data/cache cache \
+		&& ln -snf data/crashes crashes \
+	&& chown fxserver:fxserver data/resources data/cache data/crashes \
+	&& touch /opt/cfx-server/server.cfg
 
-COPY /server.cfg /config/server.cfg
+USER fxserver:fxserver
 
-USER fxserver
-
-VOLUME ["/data/cache", "/data/crashes", "/data/resources"]
+VOLUME ["/opt/cfx-server/data"]
 
 EXPOSE 30120/tcp 30120/udp
 

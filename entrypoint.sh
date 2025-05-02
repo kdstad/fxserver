@@ -1,11 +1,9 @@
 #!/bin/sh
 
 # Create necessary directories if they don't already exist
-mkdir -p /data/cache /data/crashes
-
-if [ ! -d /data/resources ]; then
-	mkdir -p /data/resources
-fi
+mkdir -p /opt/cfx-server/data/resources
+mkdir -p /opt/cfx-server/data/cache
+mkdir -p /opt/cfx-server/data/crashes
 
 # Clear the cache files directory if it exists
 if [ -d /opt/cfx-server/data/cache ]; then
