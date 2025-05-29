@@ -1,5 +1,7 @@
 # fxserver
 
+**Disclaimer: This image does not work well, use it at own risk**
+
 This is a docker image for running FXServer
 
 ```sh
